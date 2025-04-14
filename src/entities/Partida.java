@@ -1,13 +1,17 @@
 package entities;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Partida {
     private int id;
     private List<Jogador> jogadores;
+
     private List<Pergunta> perguntas;
-    private Map<Jogador, Integer> raking;
+
+    private Map<Jogador, Integer> raking = new HashMap<>();
 
     public Partida(int id, List<Jogador> jogadores, List<Pergunta> perguntas, Map<Jogador, Integer> raking) {
         this.id = id;
@@ -16,8 +20,10 @@ public class Partida {
         this.raking = raking;
     }
 
-    public void registrarResposta(Jogador jogador, int resposta){
-        //implementar funcionamento
+    public void registrarResposta(Jogador jogador, int resposta, int indexPergunta){
+        if(Objects.equals(perguntas.get(indexPergunta).getRespostaCerta(), perguntas.get(indexPergunta).getOpcoes().get(resposta))){
+            // acrescentar pontuação ao jogador
+        }
     }
 
     public int getId() {
