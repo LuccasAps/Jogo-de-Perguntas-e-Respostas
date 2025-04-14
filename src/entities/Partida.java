@@ -22,7 +22,8 @@ public class Partida {
 
     public void registrarResposta(Jogador jogador, int resposta, int indexPergunta){
         if(Objects.equals(perguntas.get(indexPergunta).getRespostaCerta(), perguntas.get(indexPergunta).getOpcoes().get(resposta))){
-            // acrescentar pontuação ao jogador
+
+            jogador.setPontuacao(perguntas.get(indexPergunta).acrescentaPontuacao());
         }
     }
 

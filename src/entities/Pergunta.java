@@ -35,6 +35,18 @@ public class Pergunta {
         return opcoes;
     }
 
+    public int acrescentaPontuacao() {
+        if(dificuldade.getCode() == 1){
+            return pontuacao;
+
+        } else if (dificuldade.getCode() == 2) {
+            return pontuacao * 2;
+        }
+        else{
+            return pontuacao * 3;
+        }
+    }
+
     public void setOpcoes(List<String> opcoes) {
         this.opcoes = opcoes;
     }
