@@ -3,15 +3,27 @@ package entities;
 public class Jogador extends Usuario {
     private int pontuacao;
     private int vitorias;
+    private int desistencias;
 
     public Jogador(int id, String nome, String password, int pontuacao, int vitorias) {
         super(id, nome, password);
         this.pontuacao = pontuacao;
         this.vitorias = vitorias;
+        this.desistencias = 0;
     }
 
     public void desistirPergunta(){
-        //implementar funcionamento
+
+        //aplicando penalidade por desistir de uma pergunta
+        this.pontuacao -= 5;
+        //verificando se a pontuacao ficou negativa
+        if(this.pontuacao < 0){
+            this.pontuacao = 0;
+        }
+
+        this.desistencias++;
+
+
     }
 
     public int getPontuacao() {
@@ -37,6 +49,7 @@ public class Jogador extends Usuario {
                 ", nome='" + nome + '\'' +
                 ", vitorias=" + vitorias +
                 ", pontuacao=" + pontuacao +
+                ", desistencias=" + desistencias +
                 ']';
     }
 }
