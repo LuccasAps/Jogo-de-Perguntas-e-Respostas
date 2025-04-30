@@ -81,13 +81,11 @@ public class Pergunta {
 
     @Override
     public String toString() {
-        return "Pergunta[" +
-                "id=" + id +
-                ", enunciado='" + enunciado + '\'' +
-                ", opcoes=" + opcoes +
-                ", respostaCerta='" + respostaCerta + '\'' +
-                ", pontuacao=" + pontuacao +
-                ", dificuldade=" + dificuldade +
-                ']';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Pergunta: ").append(enunciado).append("\n");
+        for (int i = 0; i < opcoes.size(); i++) {
+            sb.append(i).append(": ").append(opcoes.get(i)).append("\n");
+        }
+        return sb.toString();
     }
 }
