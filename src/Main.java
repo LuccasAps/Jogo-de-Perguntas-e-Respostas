@@ -141,6 +141,8 @@ public class Main {
                     System.out.println("Digite o numero de opcoes: ");
                     int numeroOpcoes = sc.nextInt();
 
+                    sc.nextLine();
+
                     List<String> opcoes = new ArrayList<>();
                     for(int i = 0; i < numeroOpcoes; i++){
                         System.out.println("Digite uma opção de resposta (" + i + ")");
