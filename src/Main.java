@@ -133,6 +133,8 @@ public class Main {
                     System.out.println("Digite o id da pergunta: ");
                     int id = sc.nextInt();
 
+                    sc.nextLine();
+
                     System.out.println("Digite o enunciado da pergunta: ");
                     String enunciado = sc.nextLine();
 
