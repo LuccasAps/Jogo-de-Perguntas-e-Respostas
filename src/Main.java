@@ -129,8 +129,11 @@ public class Main {
                     System.out.println("Autenticado com sucesso");
 
                     System.out.println("Cadastrando Pergunta: ");
-                    System.out.println("Digite o id da pergunta: ");
-                    int id = sc.nextInt();
+
+                    //System.out.println("Digite o id da pergunta: ");
+                    //int id = sc.nextInt();
+
+                    //sc.nextLine();
 
                     System.out.println("Digite o enunciado da pergunta: ");
                     String enunciado = sc.nextLine();
@@ -156,11 +159,9 @@ public class Main {
                     System.out.println("Digite a dificuldade da pergunta: FACIL, MEDIO, DIFICIL");
                     String dificuldade = sc.next();
 
-                    Pergunta pergunta = new Pergunta(id, enunciado, opcoes, opcoes.get(respostaCerta), pontuacao, Dificuldade.valueOf(dificuldade.toUpperCase()));
+                    listaPerguntas.add(adminCadastro.cadastrarPergunta(enunciado, opcoes, opcoes.get(respostaCerta), pontuacao, Dificuldade.valueOf(dificuldade.toUpperCase())));
 
                     System.out.println("Pergunta Cadastrada com sucesso!");
-
-                    listaPerguntas.add(pergunta);
 
                     break;
 
@@ -193,7 +194,7 @@ public class Main {
                         System.out.println("Jogador " + (i+1) + ": " + listaJogadores.get(i));
                     }
 
-                    for(int i = 0; i < listaPerguntas.size(); i++){
+                    for(int i = 1; i < listaPerguntas.size(); i++){
                         System.out.println("Pergunta " + (i+1) + ": " + listaPerguntas.get(i));
                         System.out.println("Resposta:");
                         for(int j = 0; j < listaJogadores.size(); j++){
