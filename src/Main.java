@@ -155,7 +155,7 @@ public class Main {
                     System.out.println("Digite a dificuldade da pergunta: FACIL, MEDIO, DIFICIL");
                     String dificuldade = sc.next();
 
-                    Pergunta pergunta = new Pergunta(id, enunciado, opcoes, opcoes.get(respostaCerta - 1), pontuacao, Dificuldade.valueOf(dificuldade.toUpperCase()));
+                    Pergunta pergunta = new Pergunta(id, enunciado, opcoes, opcoes.get(respostaCerta), pontuacao, Dificuldade.valueOf(dificuldade.toUpperCase()));
 
                     System.out.println("Pergunta Cadastrada com sucesso!");
 
