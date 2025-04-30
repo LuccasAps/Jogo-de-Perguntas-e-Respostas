@@ -1,18 +1,20 @@
 package entities;
 
+import java.util.UUID;
+
 public abstract class Usuario {
 
-    protected int id;
+    protected UUID id;
     protected String nome;
     protected String password;
 
-    public Usuario(int id, String nome, String password) {
+    public Usuario(UUID id, String nome, String password) {
         this.id = id;
         this.nome = nome;
         this.password = password;
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 

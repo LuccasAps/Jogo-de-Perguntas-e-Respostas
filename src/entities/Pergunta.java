@@ -47,6 +47,10 @@ public class Pergunta {
         }
     }
 
+    public int getId(){
+        return id;
+    }
+
     public void setOpcoes(List<String> opcoes) {
         this.opcoes = opcoes;
     }

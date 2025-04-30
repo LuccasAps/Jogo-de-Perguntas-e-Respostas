@@ -1,11 +1,13 @@
 package entities;
 
+import java.util.UUID;
+
 public class Jogador extends Usuario {
     private int pontuacao;
     private int vitorias;
     private int desistencias;
 
-    public Jogador(int id, String nome, String password, int pontuacao, int vitorias) {
+    public Jogador(UUID id, String nome, String password) {
         super(id, nome, password);
         this.pontuacao = pontuacao;
         this.vitorias = vitorias;
@@ -22,8 +24,6 @@ public class Jogador extends Usuario {
         }
 
         this.desistencias++;
-
-
     }
 
     public int getPontuacao() {
