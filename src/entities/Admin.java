@@ -22,13 +22,13 @@ public class Admin extends Usuario {
         return new Jogo(numeroParticipantes, numeroRodadas);
     }
 
-    public Pergunta cadastrarPergunta(int id, String enunciado, List<String> opcoes,
+    public Pergunta cadastrarPergunta(String enunciado, List<String> opcoes,
                                       String respostaCerta, int pontuacao, Dificuldade dificuldade) {
         if (enunciado == null || enunciado.isEmpty()) {
             throw new IllegalArgumentException("O enunciado não pode estar vazio");
         }
-        if (opcoes == null || opcoes.size() < 3) {
-            throw new IllegalArgumentException("A pergunta deve ter pelo menos 3 opções");
+        if (opcoes == null || opcoes.size() < 2) {
+            throw new IllegalArgumentException("A pergunta deve ter pelo menos 2 opções");
         }
         if (respostaCerta == null || respostaCerta.isEmpty()) {
             throw new IllegalArgumentException("A resposta certa não pode estar vazia");
@@ -43,6 +43,7 @@ public class Admin extends Usuario {
             throw new IllegalArgumentException("A dificuldade não pode ser nula");
         }
 
-        return new Pergunta(id, enunciado, opcoes, respostaCerta, pontuacao, dificuldade);
+        return new Pergunta(enunciado, opcoes, respostaCerta, pontuacao, dificuldade);
+
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 public class Jogo {
     private int numeroParticipantes;
     private int numeroRodadas;
+    private List<String> assuntos;
     private List<Pergunta>perguntas;
     private List<Jogador>jogadores;
     private boolean jogoEmAndamento;
@@ -14,6 +15,7 @@ public class Jogo {
     public Jogo(int numeroParticipantes, int numeroRodadas) {
         this.numeroParticipantes = numeroParticipantes;
         this.numeroRodadas = numeroRodadas;
+        this.assuntos = new ArrayList<>();
         this.perguntas = new ArrayList<>();
         this.jogadores = new ArrayList<>();
         this.jogoEmAndamento = false;
@@ -56,14 +58,64 @@ public class Jogo {
         }
 
         if(vencedor != null){
-            System.out.println("O vencedor é: " + vencedor.getNome());
+            System.out.println("O vencedor é: " + vencedor.getNome() + " com " + vencedor.getPontuacao() + " pontos!");
+        } else{
+            System.out.println("O jogo terminou em empate!");
+        }
+        jogoEmAndamento = false;
+        rodadaAtual = 0;
+        System.out.println("Jogo finalizado!");
+    }
+
+    public void proximaRodada(){
+        if(!jogoEmAndamento){
+            throw new IllegalStateException("O jogo não está em andamento");
+        }
+
+        if(rodadaAtual>= numeroRodadas){
+            throw new IllegalStateException("Todas as rodadas já foram jogadas");
+        }
+
+        rodadaAtual++;
+        System.out.println("iniciando rodada "+ rodadaAtual);
+    }
+
+    public Pergunta getPerguntaAtual(){
+        if(!jogoEmAndamento){
+            throw new IllegalStateException("O jogo não está em andamento");
+        }
+        if (rodadaAtual <= 0|| rodadaAtual > perguntas.size()) {
+            throw new IllegalStateException("Rodada inválida");
+        }
+        return perguntas.get(rodadaAtual-1);
+    }
+
+    public void adicionarJogador(Jogador jogador){
+        if(jogadores.size() < numeroParticipantes){
+            jogadores.add(jogador);
+        }
+        else {
+            throw new IllegalStateException("Número máximo de jogadores já atingido");
         }
     }
 
-    public int getNumeroParticipantes() {
-        return numeroParticipantes;
+    public void adicionarPergunta(Pergunta pergunta){
+        perguntas.add(pergunta);
     }
 
+    public void adicionarAssunto(String assunto){
+        assuntos.add(assunto);
+    }
+
+    public boolean isJogoEmAndamento() {
+        return jogoEmAndamento;
+    }
+    public int getRodadaAtual() {
+        return rodadaAtual;
+    }
+    public int getNumeroParticipantes(){
+        return numeroParticipantes;
+    }
     public void setNumeroParticipantes(int numeroParticipantes) {
         this.numeroParticipantes = numeroParticipantes;
     }
@@ -76,13 +128,35 @@ public class Jogo {
         this.numeroRodadas = numeroRodadas;
     }
 
+    public List<String> getAssuntos() {
+        return assuntos;
+    }
+    public void setAssuntos(List<String> assuntos) {
+        this.assuntos = assuntos;
+    }
 
+    public List<Pergunta> getPerguntas() {
+        return perguntas;
+    }
+    public void setPerguntas(List<Pergunta> perguntas) {
+        this.perguntas = perguntas;
+    }
+    public List<Jogador> getJogadores() {
+        return jogadores;
+    }
+
+    public void setJogadores(List<Jogador> jogadores) {
+        this.jogadores = jogadores;
+    }
 
     @Override
     public String toString() {
         return "Jogo[" +
-                ", numeroParticipantes=" + numeroParticipantes +
+                "numeroParticipantes=" + numeroParticipantes +
                 ", numeroRodadas=" + numeroRodadas +
+                ", assuntos=" + assuntos +
+                ", jogoEmAndamento=" + jogoEmAndamento +
+                ", rodadaAtual=" + rodadaAtual +
                 ']';
     }
 }
