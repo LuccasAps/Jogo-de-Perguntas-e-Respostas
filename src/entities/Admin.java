@@ -1,29 +1,25 @@
 package entities;
 
 import java.util.List;
+import java.util.UUID;
+
 import entities.enums.Dificuldade;
 
 public class Admin extends Usuario {
 
-    public Admin(int id, String nome, String password) {
+    public Admin(UUID id, String nome, String password) {
         super(id, nome, password);
     }
 
-    public Jogo criarJogo(List<String> assuntos, int numeroParticipantes, int numeroRodadas, String regras) {
-        if (assuntos == null || assuntos.isEmpty()) {
-            throw new IllegalArgumentException("O jogo deve ter pelo menos um assunto");
-        }
+    public Jogo criarJogo(int numeroParticipantes, int numeroRodadas) {
         if (numeroParticipantes <= 0) {
             throw new IllegalArgumentException("O numero de participantes deve ser maior que zero");
         }
         if (numeroRodadas <= 0) {
             throw new IllegalArgumentException("O numero de rodadas deve ser maior que zero");
         }
-        if (regras == null || regras.isEmpty()) {
-            throw new IllegalArgumentException("As regras não podem estar vazias");
-        }
 
-        return new Jogo(assuntos, numeroParticipantes, numeroRodadas, regras);
+        return new Jogo(numeroParticipantes, numeroRodadas);
     }
 
     public Pergunta cadastrarPergunta(int id, String enunciado, List<String> opcoes,
