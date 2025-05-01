@@ -101,7 +101,7 @@ public class Main {
                         for (Jogador j : listaJogadores) {
                             jogoAtual.adicionarJogador(j);
                         }
-                        // Adicionar perguntas existentes ao jogo atual
+
                         for (Pergunta p : listaPerguntas) {
                             jogoAtual.adicionarPergunta(p);
                         }
