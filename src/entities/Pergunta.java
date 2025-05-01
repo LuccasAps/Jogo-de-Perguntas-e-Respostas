@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Pergunta {
 
-    private static int id = 0;
+    private int id;
     private String enunciado;
     private List<String> opcoes;
     private String respostaCerta;
@@ -14,8 +14,8 @@ public class Pergunta {
 
     private Dificuldade dificuldade;
 
-    public Pergunta(String enunciado, List<String> opcoes, String respostaCerta, int pontuacao, Dificuldade dificuldade) {
-        Pergunta.id++;
+    public Pergunta(int id, String enunciado, List<String> opcoes, String respostaCerta, int pontuacao, Dificuldade dificuldade) {
+        this.id = id;
         this.enunciado = enunciado;
         this.opcoes = opcoes;
         this.respostaCerta = respostaCerta;
