@@ -69,7 +69,7 @@ public class Main {
 
 
                 case 3:
-                    try{
+                    try {
                         System.out.println("Criando Jogo...");
                         System.out.println("Somente um Admin pode criar um jogo");
                         System.out.println("Digite o nome e senha para se autenticar: ");
@@ -101,12 +101,17 @@ public class Main {
                         for (Jogador j : listaJogadores) {
                             jogoAtual.adicionarJogador(j);
                         }
+                        // Adicionar perguntas existentes ao jogo atual
+                        for (Pergunta p : listaPerguntas) {
+                            jogoAtual.adicionarPergunta(p);
+                        }
                         System.out.println("Jogo criado com sucesso!");
-                    }catch (RuntimeException e){
-                        e.getMessage();
+                    } catch (RuntimeException e) {
+                        System.out.println("Erro ao criar o jogo: " + e.getMessage());
                     }finally {
                         break;
                     }
+
 
                 case 4:
                     try{
@@ -169,7 +174,16 @@ public class Main {
                     }
 
                 case 5:
-                    try{
+                    try {
+                        if (jogoAtual == null) {
+                            System.out.println("Você precisa criar um jogo primeiro (opção 3).");
+                            break;
+                        }
+                        if (jogoAtual.getPerguntas().size() < jogoAtual.getNumeroRodadas()) {
+                            System.out.println("Número de perguntas insuficiente. Cadastre mais perguntas (opção 4).");
+                            break;
+                        }
+
                         System.out.println("Iniciando a partida...");
                         qtdPartidas++;
                         List<Pergunta> perguntasPartida = jogoAtual.getPerguntas().subList(0, jogoAtual.getNumeroRodadas());
@@ -177,12 +191,10 @@ public class Main {
                         System.out.println("Partida iniciada com sucesso!");
                         System.out.println("Bem-vindo à partida! Responda às perguntas escolhendo o número da opção correta.");
 
-
                         System.out.println("\nJogadores na partida:");
                         for (int i = 0; i < partida.getJogadores().size(); i++) {
                             System.out.println(partida.getJogadores().get(i));
                         }
-
 
                         for (int i = 0; i < partida.getPerguntas().size(); i++) {
                             System.out.println("\n--- Pergunta " + (i + 1) + " ---");
@@ -196,20 +208,20 @@ public class Main {
                                     resposta = sc.nextInt();
                                 }
                                 partida.registrarResposta(partida.getJogadores().get(j), resposta, i);
-
                             }
                         }
-                      
+
                         System.out.println("\nPartida finalizada com sucesso!");
                         System.out.println("Resultados da partida:");
                         for (Jogador j : partida.getJogadores()) {
                             System.out.println(j);
                         }
                     } catch (RuntimeException e) {
-
+                        System.out.println("Erro ao iniciar a partida: " + e.getMessage());
                     }finally {
                         break;
                     }
+
 
                 case 0:
                     System.out.println("Saindo...");
