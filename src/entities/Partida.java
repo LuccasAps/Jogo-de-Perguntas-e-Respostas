@@ -8,9 +8,7 @@ import java.util.Objects;
 public class Partida {
     private int id;
     private List<Jogador> jogadores;
-
     private List<Pergunta> perguntas;
-
     private Map<Jogador, Integer> raking = new HashMap<>();
 
     public Partida(int id, List<Jogador> jogadores, List<Pergunta> perguntas, Map<Jogador, Integer> raking) {
@@ -21,9 +19,9 @@ public class Partida {
     }
 
     public void registrarResposta(Jogador jogador, int resposta, int indexPergunta){
-        if(perguntas.get(indexPergunta).getRespostaCerta() == perguntas.get(indexPergunta).getOpcoes().get(resposta)){
-
-            jogador.setPontuacao(perguntas.get(indexPergunta).acrescentaPontuacao());
+        Pergunta pergunta = perguntas.get(indexPergunta);
+        if (Objects.equals(pergunta.getRespostaCerta(), pergunta.getOpcoes().get(resposta))) {
+            jogador.setPontuacao(jogador.getPontuacao() + pergunta.acrescentaPontuacao()); // Somar pontos
         }
     }
 

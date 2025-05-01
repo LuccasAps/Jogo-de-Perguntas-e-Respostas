@@ -9,20 +9,16 @@ public class Jogador extends Usuario {
 
     public Jogador(UUID id, String nome, String password) {
         super(id, nome, password);
-        this.pontuacao = pontuacao;
-        this.vitorias = vitorias;
+        this.pontuacao = 0;
+        this.vitorias = 0;
         this.desistencias = 0;
     }
 
-    public void desistirPergunta(){
-
-        //aplicando penalidade por desistir de uma pergunta
+    public void desistirPergunta() {
         this.pontuacao -= 5;
-        //verificando se a pontuacao ficou negativa
-        if(this.pontuacao < 0){
+        if (this.pontuacao < 0) {
             this.pontuacao = 0;
         }
-
         this.desistencias++;
     }
 
@@ -44,12 +40,6 @@ public class Jogador extends Usuario {
 
     @Override
     public String toString() {
-        return "Jogador[" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", vitorias=" + vitorias +
-                ", pontuacao=" + pontuacao +
-                ", desistencias=" + desistencias +
-                ']';
+        return "Jogador: " + nome + " | Pontuação: " + pontuacao;
     }
 }
