@@ -27,8 +27,8 @@ public class Admin extends Usuario {
         if (enunciado == null || enunciado.isEmpty()) {
             throw new IllegalArgumentException("O enunciado não pode estar vazio");
         }
-        if (opcoes == null || opcoes.size() < 3) {
-            throw new IllegalArgumentException("A pergunta deve ter pelo menos 3 opções");
+        if (opcoes == null || opcoes.size() < 2) {
+            throw new IllegalArgumentException("A pergunta deve ter pelo menos 2 opções");
         }
         if (respostaCerta == null || respostaCerta.isEmpty()) {
             throw new IllegalArgumentException("A resposta certa não pode estar vazia");
