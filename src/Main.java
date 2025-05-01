@@ -167,8 +167,12 @@ public class Main {
                             jogoAtual.adicionarPergunta(pergunta);
                         }
                         System.out.println("Pergunta Cadastrada com sucesso!");
-                    } catch (RuntimeException e) {
-
+                    }
+                    catch (NullPointerException e){
+                        throw new NullPointerException("Cadastre perguntas antes de iniciar a partida!");
+                    }
+                    catch (RuntimeException e) {
+                        throw new RuntimeException(e.getMessage());
                     }finally {
                         break;
                     }
@@ -186,6 +190,7 @@ public class Main {
 
                         System.out.println("Iniciando a partida...");
                         qtdPartidas++;
+
                         List<Pergunta> perguntasPartida = jogoAtual.getPerguntas().subList(0, jogoAtual.getNumeroRodadas());
                         Partida partida = new Partida(qtdPartidas, jogoAtual.getJogadores(), perguntasPartida, new HashMap<>());
                         System.out.println("Partida iniciada com sucesso!");
