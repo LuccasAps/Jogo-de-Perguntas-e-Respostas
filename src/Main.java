@@ -108,7 +108,6 @@ public class Main {
                         break;
                     }
 
-
                 case 4:
                     try{
                         System.out.println("Cadastrando Pergunta...");
@@ -169,7 +168,6 @@ public class Main {
                         break;
                     }
 
-
                 case 5:
                     try{
                         System.out.println("Iniciando a partida...");
@@ -201,8 +199,7 @@ public class Main {
 
                             }
                         }
-
-
+                      
                         System.out.println("\nPartida finalizada com sucesso!");
                         System.out.println("Resultados da partida:");
                         for (Jogador j : partida.getJogadores()) {

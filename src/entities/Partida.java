@@ -18,7 +18,7 @@ public class Partida {
         this.raking = raking;
     }
 
-    public void registrarResposta(Jogador jogador, int resposta, int indexPergunta) {
+    public void registrarResposta(Jogador jogador, int resposta, int indexPergunta){
         Pergunta pergunta = perguntas.get(indexPergunta);
         if (Objects.equals(pergunta.getRespostaCerta(), pergunta.getOpcoes().get(resposta))) {
             jogador.setPontuacao(jogador.getPontuacao() + pergunta.acrescentaPontuacao()); // Somar pontos
